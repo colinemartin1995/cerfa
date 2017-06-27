@@ -25,7 +25,7 @@ public class FormationDAO extends DAO<Formation> implements IFormationDAO{
 		return null;
 	}
 
-	public Formation delete(Formation obj) {
+	public Boolean delete(Formation obj) {
 		// TODO Auto-generated method stub
 		return null;
 	}

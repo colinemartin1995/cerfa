@@ -36,13 +36,37 @@ public class CreneauDAOImpl extends DAO<Creneau> implements ICreneauDAO{
 	}
 
 	public Creneau update(Creneau obj) {
-		// TODO Auto-generated method stub
-		return null;
+		try(PreparedStatement preparedStatement =con.prepareStatement("UPDATE Creneau SET dateDebut = ?, dateFin = ?, interne = ?, fk_formation =? WHERE idCreneau = ?")){
+			preparedStatement.setDate(1,Date.valueOf(obj.getDateDebut()));
+			preparedStatement.setDate(2,Date.valueOf(obj.getDateFin()));
+			preparedStatement.setBoolean(3,obj.isInterne());
+			preparedStatement.setLong(4,obj.getFk_formation());
+			preparedStatement.setLong(5,obj.getIdCreneau());
+			preparedStatement.executeUpdate();
+			
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
+		return obj;
 	}
 
-	public Creneau delete(Creneau obj) {
-		// TODO Auto-generated method stub
-		return null;
+	public Boolean delete(Creneau obj) {
+		boolean isDeleted = false;
+		try(PreparedStatement preparedStatement =con.prepareStatement("DELETE FROM Creneau WHERE idCreneau = ?")){
+			preparedStatement.setLong(1,obj.getIdCreneau());
+			preparedStatement.execute();
+			int rows = preparedStatement.executeUpdate();
+			
+
+            if (rows > 0) {
+                isDeleted = true;
+            }
+		}
+		catch(Exception e){
+			
+		}
+		return isDeleted;
 	}
 
 	public List<Creneau> findAll() {

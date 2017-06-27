@@ -23,7 +23,7 @@ public class FormateurDAOImpl extends DAO<Formateur> implements IFormateurDAO{
 		return null;
 	}
 
-	public Formateur delete(Formateur obj) {
+	public Boolean delete(Formateur obj) {
 		// TODO Auto-generated method stub
 		return null;
 	}

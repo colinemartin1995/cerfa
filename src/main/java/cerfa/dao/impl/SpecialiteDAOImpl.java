@@ -24,7 +24,7 @@ public class SpecialiteDAOImpl extends DAO<Specialite> implements ISpecialiteDAO
 		return null;
 	}
 
-	public Specialite delete(Specialite obj) {
+	public Boolean delete(Specialite obj) {
 		// TODO Auto-generated method stub
 		return null;
 	}

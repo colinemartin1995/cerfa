@@ -25,7 +25,7 @@ public class CreneauStagiaireDAO extends DAO<CreneauStagiaire> implements ICrene
 		return null;
 	}
 
-	public CreneauStagiaire delete(CreneauStagiaire obj) {
+	public Boolean delete(CreneauStagiaire obj) {
 		// TODO Auto-generated method stub
 		return null;
 	}

@@ -25,7 +25,7 @@ public class CreneauFormateurDAO extends DAO<CreneauFormateur> implements ICrene
 		return null;
 	}
 
-	public CreneauFormateur delete(CreneauFormateur obj) {
+	public Boolean delete(CreneauFormateur obj) {
 		// TODO Auto-generated method stub
 		return null;
 	}

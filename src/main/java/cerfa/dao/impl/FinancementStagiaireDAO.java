@@ -25,7 +25,7 @@ public class FinancementStagiaireDAO extends DAO<FinancementStagiaire> implement
 		return null;
 	}
 
-	public FinancementStagiaire delete(FinancementStagiaire obj) {
+	public Boolean delete(FinancementStagiaire obj) {
 		// TODO Auto-generated method stub
 		return null;
 	}

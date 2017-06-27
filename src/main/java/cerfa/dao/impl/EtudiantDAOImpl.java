@@ -23,7 +23,7 @@ public class EtudiantDAOImpl extends DAO<Stagiaire> implements IEtudiantDAO {
 		return null;
 	}
 
-	public Stagiaire delete(Stagiaire obj) {
+	public Boolean delete(Stagiaire obj) {
 		// TODO Auto-generated method stub
 		return null;
 	}

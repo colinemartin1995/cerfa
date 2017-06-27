@@ -5,6 +5,10 @@ public class DbException extends Exception {
 	public DbException(String string) {
 		super(string);
 	}
+	public DbException(String message, Exception parent){
+		super(message,parent);
+		
+	}
 
 	/**
 	 * 

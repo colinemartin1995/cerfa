@@ -23,7 +23,7 @@ public class FinancementDAOImpl  extends DAO<Financement> implements IFinancemen
 		return null;
 	}
 
-	public Financement delete(Financement obj) {
+	public Boolean delete(Financement obj) {
 		// TODO Auto-generated method stub
 		return null;
 	}

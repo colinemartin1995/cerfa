@@ -24,7 +24,7 @@ public class ObjectifDAOImpl extends DAO<Objectif> implements IObjectifDAO{
 		return null;
 	}
 
-	public Objectif delete(Objectif obj) {
+	public Boolean delete(Objectif obj) {
 		// TODO Auto-generated method stub
 		return null;
 	}
