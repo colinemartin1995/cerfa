@@ -2,38 +2,39 @@ package cerfa.dao.impl;
 
 import java.util.List;
 
-import cerfa.dao.interfaces.StudentDAO;
+
+import cerfa.dao.interfaces.IObjectifDAO;
 import cerfa.db.DbException;
-import cerfa.model.Student;
+import cerfa.model.Objectif;
 
-public class StudentDAOImpl extends DAO<Student> implements StudentDAO {
+public class ObjectifDAOImpl extends DAO<Objectif> implements IObjectifDAO{
 
-	public StudentDAOImpl() throws ClassNotFoundException, DbException {
+	public ObjectifDAOImpl() throws ClassNotFoundException, DbException {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Student create(Student obj) {
+	public Objectif create(Objectif obj) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public Student update(Student obj) {
+	public Objectif update(Objectif obj) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public Student delete(Student obj) {
+	public Objectif delete(Objectif obj) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public List<Student> findAll() {
+	public List<Objectif> findAll() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public Student find(long id) {
+	public Objectif find(long id) {
 		// TODO Auto-generated method stub
 		return null;
 	}

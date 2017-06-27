@@ -1,10 +1,10 @@
 package cerfa.model;
 
-public class Student {
+public class Stagiaire {
 
 	private Integer idStagiaire;
 	private boolean interne;
-	private Integer idPersonne;
+	
 	private String nom;
 	private String prenom;
 	
@@ -24,14 +24,6 @@ public class Student {
 	public void setInterne(boolean interne) {
 		this.interne = interne;
 	}
-	
-	public Integer getIdPersonne() {
-		return idPersonne;
-	}
-
-	public void setIdPersonne(Integer idPersonne) {
-		this.idPersonne = idPersonne;
-	}
 
 	public String getNom() {
 		return nom;
@@ -49,7 +41,7 @@ public class Student {
 		this.prenom = prenom;
 	}
 	
-	public Student(boolean interne, String nom, String prenom){
+	public Stagiaire(boolean interne, String nom, String prenom){
 		this.interne = interne;
 		this.nom = nom;
 		this.prenom = prenom;

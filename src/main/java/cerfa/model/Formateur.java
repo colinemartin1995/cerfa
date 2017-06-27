@@ -1,6 +1,6 @@
 package cerfa.model;
 
-public class Professor {
+public class Formateur {
 	private Integer idProfessor;
 	private boolean interne;
 	private Integer idPersonne;
@@ -49,7 +49,7 @@ public class Professor {
 		this.prenom = prenom;
 	}
 	
-	public Professor(boolean interne, String nom, String prenom){
+	public Formateur(boolean interne, String nom, String prenom){
 		this.interne = interne;
 		this.nom = nom;
 		this.prenom = prenom;
