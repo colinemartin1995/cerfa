@@ -1,49 +1,86 @@
 package cerfa.model.impl;
 
-public class Formation {
+import cerfa.model.interfaces.IObjectif;
+import cerfa.model.interfaces.ISpecialite;
+import cerfa.model.interfaces.IFormation;
+
+public class Formation implements IFormation{
 	
 	private long idFormation;
 	private String nom;
-	private long fk_specialite;
-	private long fk_objectif;
+	private ISpecialite specialite;
+	private IObjectif objectif;
 
+	/* (non-Javadoc)
+	 * @see cerfa.model.impl.Iformation#getIdFormation()
+	 */
+	@Override
 	public long getIdFormation() {
 		return idFormation;
 	}
+	/* (non-Javadoc)
+	 * @see cerfa.model.impl.Iformation#setIdFormation(long)
+	 */
+	@Override
 	public void setIdFormation(long idFormation) {
 		this.idFormation = idFormation;
 	}
+	/* (non-Javadoc)
+	 * @see cerfa.model.impl.Iformation#getNom()
+	 */
+	@Override
 	public String getNom() {
 		return nom;
 	}
+	/* (non-Javadoc)
+	 * @see cerfa.model.impl.Iformation#setNom(java.lang.String)
+	 */
+	@Override
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
-	public long getFk_specialite() {
-		return fk_specialite;
+	/* (non-Javadoc)
+	 * @see cerfa.model.impl.Iformation#getObjectif()
+	 */
+	@Override
+	public IObjectif getObjectif() {
+		return objectif;
 	}
-	public void setFk_specialite(long fk_specialite) {
-		this.fk_specialite = fk_specialite;
+	/* (non-Javadoc)
+	 * @see cerfa.model.impl.Iformation#setObjectif(cerfa.model.interfaces.IObjectif)
+	 */
+	@Override
+	public void setObjectif(IObjectif objectif) {
+		this.objectif = objectif;
 	}
-	public long getFk_objectif() {
-		return fk_objectif;
+	/* (non-Javadoc)
+	 * @see cerfa.model.impl.Iformation#getSpecialite()
+	 */
+	@Override
+	public ISpecialite getSpecialite() {
+		return specialite;
 	}
-	public void setFk_objectif(Integer fk_objectif) {
-		this.fk_objectif = fk_objectif;
-	}
-	
-	
-	public Formation(long idFormation, String nom, long fk_specialite, long fk_objectif) {
-		this.idFormation = idFormation;
-		this.nom = nom;
-		this.fk_specialite = fk_specialite;
-		this.fk_objectif = fk_objectif;
-	}
-	public Formation(String nom, long fk_specialite, long fk_objectif) {
-		
-		this.nom = nom;
-		this.fk_specialite = fk_specialite;
-		this.fk_objectif = fk_objectif;
+	/* (non-Javadoc)
+	 * @see cerfa.model.impl.Iformation#setSpecialite(cerfa.model.interfaces.ISpecialite)
+	 */
+	@Override
+	public void setSpecialite(ISpecialite specialite) {
+		this.specialite = specialite;
 	}
 
+
+	public Formation(long idFormation, String nom, ISpecialite specialite, IObjectif objectif) {
+		this.idFormation = idFormation;
+		this.nom = nom;
+		this.specialite = specialite;
+		this.objectif = objectif;
+	}
+	
+
+	public Formation(String nom, ISpecialite specialite, IObjectif objectif) {
+		this.nom = nom;
+		this.specialite = specialite;
+		this.objectif = objectif;
+	}
+	
 }

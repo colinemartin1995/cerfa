@@ -8,6 +8,7 @@ import java.util.List;
 import cerfa.dao.interfaces.IEtudiantDAO;
 import cerfa.db.DbException;
 import cerfa.model.impl.Stagiaire;
+import cerfa.model.interfaces.IStagiaire;
 
 public class StagiaireDAOImpl extends DAO<Stagiaire> implements IEtudiantDAO {
 
@@ -16,7 +17,7 @@ public class StagiaireDAOImpl extends DAO<Stagiaire> implements IEtudiantDAO {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Stagiaire create(Stagiaire obj) {
+	public IStagiaire create(IStagiaire obj) {
 		try(PreparedStatement preparedStatement =con.prepareStatement("INSERT INTO stagiaire (idStagiaire, nom, prenom, interne) VALUES(?,?,?,?)"
 				+ "INNER JOIN personne ON idStagiaire = personne.idPersonne ")){
 			preparedStatement.setLong(1,obj.getIdPersonne());
@@ -37,7 +38,7 @@ public class StagiaireDAOImpl extends DAO<Stagiaire> implements IEtudiantDAO {
 		return obj;
 	}
 
-	public Stagiaire update(Stagiaire obj) {
+	public IStagiaire update(IStagiaire obj) {
 		try(PreparedStatement preparedStatement =con.prepareStatement("UPDATE stagiaire SET nom = ?, prenom = ?, interne = ? WHERE idStagiaire = ? INNER JOIN personne ON idStagiaire = personne.idPersonne")){
 			preparedStatement.setString(1,obj.getNom());
 			preparedStatement.setString(2,obj.getPrenom());
@@ -52,7 +53,7 @@ public class StagiaireDAOImpl extends DAO<Stagiaire> implements IEtudiantDAO {
 		return obj;
 	}
 
-	public Boolean delete(Stagiaire obj) {
+	public Boolean delete(IStagiaire obj) {
 		boolean isDeleted = false;
 		try(PreparedStatement preparedStatement =con.prepareStatement("DELETE FROM stagiaire WHERE idStagiaire = ?")) {
 			preparedStatement.setLong(1, obj.getIdStagiaire());
@@ -94,7 +95,7 @@ public class StagiaireDAOImpl extends DAO<Stagiaire> implements IEtudiantDAO {
 			return listeStagiaires;
 	}
 
-	public Stagiaire find(long id) {
+	public IStagiaire find(long id) {
 		 
 			Stagiaire stagiaire = null;
 			try(PreparedStatement preparedStatement =con.prepareStatement("SELECT idStagiaire, nom, prenom, interne FROM stagiaire INNER JOIN personne ON idStagiaire = personne.idPersonne WHERE idStagiaire = ?")){

@@ -10,6 +10,8 @@ import java.util.List;
 import cerfa.dao.interfaces.ISpecialiteDAO;
 import cerfa.db.DbException;
 import cerfa.model.impl.Specialite;
+import cerfa.model.interfaces.ISpecialite;
+import cerfa.model.proxy.ProxySpecialite;
 
 public class SpecialiteDAOImpl extends DAO<Specialite> implements ISpecialiteDAO {
 
@@ -18,7 +20,7 @@ public class SpecialiteDAOImpl extends DAO<Specialite> implements ISpecialiteDAO
 		// TODO Auto-generated constructor stub
 	}
 
-	public Specialite create(Specialite obj) {
+	public ISpecialite create(ISpecialite obj) {
 		try(PreparedStatement preparedStatement =con.prepareStatement("INSERT INTO specialite (nom, code)VALUES(?,?)")){
 			preparedStatement.setString(1,obj.getNom());
 			preparedStatement.setString(2,obj.getCode());
@@ -34,7 +36,7 @@ public class SpecialiteDAOImpl extends DAO<Specialite> implements ISpecialiteDAO
 	
 	}
 
-	public Specialite update(Specialite obj) {
+	public ISpecialite update(ISpecialite obj) {
 		try(PreparedStatement preparedStatement =con.prepareStatement("UPDATE specialite SET nom = ?, code = ? WHERE idSpecialite = ?")){
 			preparedStatement.setString(1,obj.getNom());
 			preparedStatement.setString(2,obj.getCode());
@@ -47,7 +49,7 @@ public class SpecialiteDAOImpl extends DAO<Specialite> implements ISpecialiteDAO
 		return obj;
 	}
 
-	public Boolean delete(Specialite obj) {
+	public Boolean delete(ISpecialite obj) {
 		boolean isDeleted = false;
 		try(PreparedStatement preparedStatement =con.prepareStatement("DELETE FROM specialite WHERE idSpecialite = ?")){
 			preparedStatement.setLong(1,obj.getIdSpecialite());
@@ -88,20 +90,19 @@ public class SpecialiteDAOImpl extends DAO<Specialite> implements ISpecialiteDAO
 		return listeSpecialite;
 	}
 
-	public Specialite find(long id) {
+	public ISpecialite find(long id) {
 
-		Specialite specialite = null;
+		 Specialite specialite = null;
 		try(PreparedStatement preparedStatement =con.prepareStatement("SELECT 'idSpecialite', `nom','code' FROM Specialite WHERE idSpecialite = ?")){
 		
 			ResultSet rs = preparedStatement.executeQuery();
 			preparedStatement.setLong(1,id);
 			
 			while(rs.next()){
-				
-				long idSpecialite = rs.getLong("idCreneau");
+				long idSpecialite = rs.getLong("idSpecialite");
 				String nom = rs.getString("nom");
 				String code = rs.getString("code");
-				specialite = new Specialite(idSpecialite,nom,code);
+				specialite = new Specialite(idSpecialite, nom, code);
 			}
 		}
 		catch(Exception e){

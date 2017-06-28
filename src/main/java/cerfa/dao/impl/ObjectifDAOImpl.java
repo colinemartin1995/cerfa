@@ -10,6 +10,7 @@ import java.util.List;
 import cerfa.dao.interfaces.IObjectifDAO;
 import cerfa.db.DbException;
 import cerfa.model.impl.Objectif;
+import cerfa.model.interfaces.IObjectif;
 
 public class ObjectifDAOImpl extends DAO<Objectif> implements IObjectifDAO{
 
@@ -18,7 +19,7 @@ public class ObjectifDAOImpl extends DAO<Objectif> implements IObjectifDAO{
 		// TODO Auto-generated constructor stub
 	}
 
-	public Objectif create(Objectif obj) {
+	public IObjectif create(IObjectif obj) {
 		try(PreparedStatement preparedStatement =con.prepareStatement("INSERT INTO objectif (libelle) VALUES (?)")){
 			preparedStatement.setString(1,obj.getLibelle());
 			preparedStatement.executeQuery();
@@ -34,7 +35,7 @@ public class ObjectifDAOImpl extends DAO<Objectif> implements IObjectifDAO{
 		return obj;
 	}
 
-	public Objectif update(Objectif obj) {
+	public IObjectif update(IObjectif obj) {
 		try(PreparedStatement preparedStatement =con.prepareStatement("UPDATE objectif SET libelle = ? WHERE idObjecfif = ?")){
 			preparedStatement.setString(1,obj.getLibelle());
 			preparedStatement.setLong(2,obj.getIdObjectif());
@@ -46,7 +47,7 @@ public class ObjectifDAOImpl extends DAO<Objectif> implements IObjectifDAO{
 		return obj;
 	}
 
-	public Boolean delete(Objectif obj) {
+	public Boolean delete(IObjectif obj) {
 		boolean isDeleted = false;
 		try(PreparedStatement preparedStatement =con.prepareStatement("DELETE FROM objectif WHERE idObjectif = ?")){
 			preparedStatement.setLong(1,obj.getIdObjectif());
@@ -89,8 +90,8 @@ public class ObjectifDAOImpl extends DAO<Objectif> implements IObjectifDAO{
 		
 	}
 
-	public Objectif find(long id) {
-		Objectif objectif = null;
+	public IObjectif find(long id) {
+		IObjectif objectif = null;
 		try(PreparedStatement preparedStatement =con.prepareStatement("SELECT 'idObjectif', `libelle` FROM objectif WHERE idObjectif = ?")){
 			ResultSet rs = preparedStatement.executeQuery();
 			preparedStatement.setLong(1,id);

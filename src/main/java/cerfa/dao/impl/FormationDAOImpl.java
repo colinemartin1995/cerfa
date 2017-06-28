@@ -10,6 +10,11 @@ import java.util.List;
 import cerfa.dao.interfaces.IFormationDAO;
 import cerfa.db.DbException;
 import cerfa.model.impl.Formation;
+import cerfa.model.impl.Objectif;
+import cerfa.model.impl.Specialite;
+import cerfa.model.interfaces.IFormation;
+import cerfa.model.proxy.ProxyObjectif;
+import cerfa.model.proxy.ProxySpecialite;
 
 public class FormationDAOImpl extends DAO<Formation> implements IFormationDAO{
 
@@ -18,11 +23,11 @@ public class FormationDAOImpl extends DAO<Formation> implements IFormationDAO{
 		// TODO Auto-generated constructor stub
 	}
 
-	public Formation create(Formation obj) {
+	public IFormation create(IFormation obj) {
 		try(PreparedStatement preparedStatement =con.prepareStatement("INSERT INTO formation (nom, fk_specialite, fk_objectif)VALUES(?,?,?)")){
 			preparedStatement.setDate(1,Date.valueOf(obj.getNom()));
-			preparedStatement.setLong(2,obj.getFk_specialite());
-			preparedStatement.setLong(4,obj.getFk_objectif());
+			preparedStatement.setLong(2,obj.getSpecialite().getIdSpecialite());
+			preparedStatement.setLong(4,obj.getObjectif().getIdObjectif());
 			
 			preparedStatement.executeQuery();
 			ResultSet rs = preparedStatement.getGeneratedKeys();
@@ -37,11 +42,11 @@ public class FormationDAOImpl extends DAO<Formation> implements IFormationDAO{
 		return obj;
 	}
 
-	public Formation update(Formation obj) {
+	public IFormation update(IFormation obj) {
 		try(PreparedStatement preparedStatement =con.prepareStatement("UPDATE formation SET nom = ?, fk_specialite = ?, fk_objectif = ? WHERE idFormation = ?")){
 			preparedStatement.setString(1,obj.getNom());
-			preparedStatement.setLong(2,obj.getFk_specialite());
-			preparedStatement.setLong(3,obj.getFk_objectif());
+			preparedStatement.setLong(2,obj.getSpecialite().getIdSpecialite());
+			preparedStatement.setLong(3,obj.getObjectif().getIdObjectif());
 			preparedStatement.setLong(4,obj.getIdFormation());
 			preparedStatement.executeUpdate();
 			
@@ -52,7 +57,7 @@ public class FormationDAOImpl extends DAO<Formation> implements IFormationDAO{
 		return obj;
 	}
 
-	public Boolean delete(Formation obj) {
+	public Boolean delete(IFormation obj) {
 		boolean isDeleted = false;
 		try(PreparedStatement preparedStatement =con.prepareStatement("DELETE FROM formation WHERE idFormation = ?")){
 			preparedStatement.setLong(1,obj.getIdFormation());
@@ -72,7 +77,9 @@ public class FormationDAOImpl extends DAO<Formation> implements IFormationDAO{
 
 	public List<Formation> findAll() {
         ArrayList<Formation> listeFormations = new ArrayList<Formation>();
-		
+        ProxySpecialite specialite = null;
+        ProxyObjectif objectif = null;
+        Formation formation = null;
 		try(PreparedStatement preparedStatement =con.prepareStatement("SELECT idFormation, nom,fk_specialite,fk_objectif FROM formation")){
 		
 			ResultSet rs = preparedStatement.executeQuery();
@@ -82,10 +89,12 @@ public class FormationDAOImpl extends DAO<Formation> implements IFormationDAO{
 				long idFormation = rs.getLong("idFormation");
 				String nom = rs.getString("nom");
 				
-				long fk_specialite = rs.getLong("fk_specialite");
-				long fk_objectif = rs.getLong("fk_objectif");
+				long idSpecialite = rs.getLong("fk_specialite");
+				long idObjectif = rs.getLong("fk_objectif");
 				
-				Formation formation = new Formation(idFormation,nom,fk_specialite,fk_objectif);
+				specialite = new ProxySpecialite(idSpecialite);
+				objectif = new ProxyObjectif(idObjectif);
+				formation = new Formation(idFormation,nom,specialite,objectif);
 				listeFormations.add(formation);
 				
 			}
@@ -96,21 +105,42 @@ public class FormationDAOImpl extends DAO<Formation> implements IFormationDAO{
 		return listeFormations;
 	}
 
-	public Formation find(long id) {
-		  Formation formation = null;
+	public IFormation find(long id) {
+		 Specialite specialite = null;
+	     Objectif objectif = null;
+		 IFormation formation = null;
 			
-			try(PreparedStatement preparedStatement =con.prepareStatement("SELECT idFormation, nom,fk_specialite,fk_objectif FROM formation WHERE idFormation = ?")){
+		try(PreparedStatement preparedStatement =con.prepareStatement("SELECT idFormation, nom,fk_specialite,fk_objectif FROM formation WHERE idFormation = ?")){
 				preparedStatement.setLong(1, id);
 				ResultSet rs = preparedStatement.executeQuery();
 				
 				while(rs.next()){
 					
 					long idFormation = rs.getLong("idFormation");
+					long idSpecialite = rs.getLong("fk_specialite");
+					long idObjectif = rs.getLong("fk_objectif");
 					String nom = rs.getString("nom");
-					long fk_specialite = rs.getLong("fk_specialite");
-					long fk_objectif = rs.getLong("fk_objectif");
+										
 					
-					formation = new Formation(idFormation,nom,fk_specialite,fk_objectif);
+					
+					
+					
+					
+					
+					//TODO
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					formation = new Formation(idFormation,nom,specialite,objectif);
 				}
 			}
 			catch(Exception e){
