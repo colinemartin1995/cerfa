@@ -9,7 +9,7 @@ import java.util.List;
 
 import cerfa.dao.interfaces.IFormationDAO;
 import cerfa.db.DbException;
-import cerfa.model.Formation;
+import cerfa.model.impl.Formation;
 
 public class FormationDAOImpl extends DAO<Formation> implements IFormationDAO{
 

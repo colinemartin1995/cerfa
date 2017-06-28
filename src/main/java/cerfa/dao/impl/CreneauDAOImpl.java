@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import cerfa.dao.interfaces.ICreneauDAO;
 import cerfa.db.DbException;
-import cerfa.model.Creneau;
+import cerfa.model.impl.Creneau;
 
 
 public class CreneauDAOImpl extends DAO<Creneau> implements ICreneauDAO{

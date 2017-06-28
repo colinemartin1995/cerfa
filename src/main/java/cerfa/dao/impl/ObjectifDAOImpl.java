@@ -9,7 +9,7 @@ import java.util.List;
 
 import cerfa.dao.interfaces.IObjectifDAO;
 import cerfa.db.DbException;
-import cerfa.model.Objectif;
+import cerfa.model.impl.Objectif;
 
 public class ObjectifDAOImpl extends DAO<Objectif> implements IObjectifDAO{
 

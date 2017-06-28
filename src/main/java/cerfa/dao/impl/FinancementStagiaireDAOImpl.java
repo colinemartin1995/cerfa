@@ -11,8 +11,7 @@ import java.util.List;
 
 import cerfa.dao.interfaces.IFinancementStagiaireDAO;
 import cerfa.db.DbException;
-
-import cerfa.model.FinancementStagiaire;
+import cerfa.model.impl.FinancementStagiaire;
 
 public class FinancementStagiaireDAOImpl extends DAO<FinancementStagiaire> implements IFinancementStagiaireDAO {
 

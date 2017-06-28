@@ -5,7 +5,7 @@ import java.util.List;
 import cerfa.dao.interfaces.ICreneauStagiaireDAO;
 
 import cerfa.db.DbException;
-import cerfa.model.CreneauStagiaire;
+import cerfa.model.impl.CreneauStagiaire;
 
 
 public class CreneauStagiaireDAO extends DAO<CreneauStagiaire> implements ICreneauStagiaireDAO{

@@ -1,4 +1,4 @@
-package cerfa.model;
+package cerfa.model.impl;
 
 import java.time.LocalDate;
 

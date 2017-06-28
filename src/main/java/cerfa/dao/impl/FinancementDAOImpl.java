@@ -8,7 +8,7 @@ import java.util.List;
 
 import cerfa.dao.interfaces.IFinancementDAO;
 import cerfa.db.DbException;
-import cerfa.model.Financement;
+import cerfa.model.impl.Financement;
 
 
 public class FinancementDAOImpl  extends DAO<Financement> implements IFinancementDAO{

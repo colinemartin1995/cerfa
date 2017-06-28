@@ -9,8 +9,7 @@ import java.util.List;
 
 import cerfa.dao.interfaces.ISpecialiteDAO;
 import cerfa.db.DbException;
-
-import cerfa.model.Specialite;
+import cerfa.model.impl.Specialite;
 
 public class SpecialiteDAOImpl extends DAO<Specialite> implements ISpecialiteDAO {
 

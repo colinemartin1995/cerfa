@@ -8,7 +8,7 @@ import java.util.List;
 
 import cerfa.dao.interfaces.IFormateurDAO;
 import cerfa.db.DbException;
-import cerfa.model.Formateur;
+import cerfa.model.impl.Formateur;
 
 
 public class FormateurDAOImpl extends DAO<Formateur> implements IFormateurDAO{

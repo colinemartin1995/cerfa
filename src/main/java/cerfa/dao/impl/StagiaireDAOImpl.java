@@ -7,7 +7,7 @@ import java.util.List;
 
 import cerfa.dao.interfaces.IEtudiantDAO;
 import cerfa.db.DbException;
-import cerfa.model.Stagiaire;
+import cerfa.model.impl.Stagiaire;
 
 public class StagiaireDAOImpl extends DAO<Stagiaire> implements IEtudiantDAO {
 

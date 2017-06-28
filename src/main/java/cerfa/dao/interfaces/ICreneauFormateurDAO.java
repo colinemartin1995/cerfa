@@ -1,6 +1,6 @@
 package cerfa.dao.interfaces;
 
-import cerfa.model.CreneauFormateur;
+import cerfa.model.impl.CreneauFormateur;
 
 
 public interface ICreneauFormateurDAO extends IDAO<CreneauFormateur> {

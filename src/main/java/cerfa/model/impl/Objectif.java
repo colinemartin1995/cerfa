@@ -1,6 +1,8 @@
-package cerfa.model;
+package cerfa.model.impl;
 
-public class Objectif {
+import cerfa.model.interfaces.IObjectif;
+
+public class Objectif implements IObjectif {
 	private long idObjectif;
 	private String libelle;
 	
