@@ -1,20 +1,20 @@
 package cerfa.model;
 
 public class Formateur {
-	private Integer idProfessor;
+	private long idFormateur;
 	private boolean interne;
-	private Integer idPersonne;
+	private long idPersonne;
 	private String nom;
 	private String prenom;
 	
 	
 
-	public Integer getIdProfessor() {
-		return idProfessor;
+	public long getIdFormateur() {
+		return idFormateur;
 	}
 
-	public void setIdProfessor(Integer idProfessor) {
-		this.idProfessor = idProfessor;
+	public void setIdFormateur(long idFormateur) {
+		this.idFormateur = idFormateur;
 	}
 
 	public boolean isInterne() {
@@ -25,11 +25,11 @@ public class Formateur {
 		this.interne = interne;
 	}
 
-	public Integer getIdPersonne() {
+	public long getIdPersonne() {
 		return idPersonne;
 	}
 
-	public void setIdPersonne(Integer idPersonne) {
+	public void setIdPersonne(long idPersonne) {
 		this.idPersonne = idPersonne;
 	}
 
@@ -50,6 +50,12 @@ public class Formateur {
 	}
 	
 	public Formateur(boolean interne, String nom, String prenom){
+		this.interne = interne;
+		this.nom = nom;
+		this.prenom = prenom;
+	}
+	public Formateur(long idFormateur, boolean interne, String nom, String prenom){
+		this.idFormateur = idFormateur;
 		this.interne = interne;
 		this.nom = nom;
 		this.prenom = prenom;

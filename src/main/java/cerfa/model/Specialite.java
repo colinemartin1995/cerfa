@@ -1,14 +1,14 @@
 package cerfa.model;
 
 public class Specialite {
-	private Integer idSpecialite;
+	private Long idSpecialite;
 	private String nom;
 	private String code;
 	
-	public Integer getIdSpecialite() {
+	public Long getIdSpecialite() {
 		return idSpecialite;
 	}
-	public void setIdSpecialite(Integer idSpecialite) {
+	public void setIdSpecialite(Long idSpecialite) {
 		this.idSpecialite = idSpecialite;
 	}
 	public String getNom() {
@@ -25,6 +25,12 @@ public class Specialite {
 	}
 	
 	public Specialite(String nom, String code){
+		this.nom = nom;
+		this.code = code;
+		
+	}
+	public Specialite(long id, String nom, String code){
+		this.idSpecialite = id;
 		this.nom = nom;
 		this.code = code;
 		

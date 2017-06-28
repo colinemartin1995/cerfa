@@ -2,13 +2,13 @@ package cerfa.model;
 
 public class Financement {
 	
-	private Integer idFinancement;
+	private long idFinancement;
 	private String libelle;
 	
-	public Integer getIdFinancement() {
+	public long getIdFinancement() {
 		return idFinancement;
 	}
-	public void setIdFinancement(Integer idFinancement) {
+	public void setIdFinancement(long idFinancement) {
 		this.idFinancement = idFinancement;
 	}
 	public String getLibelle() {
@@ -18,8 +18,12 @@ public class Financement {
 		this.libelle = libelle;
 	}
 	
-	public Financement(Integer idFinancement, String libelle) {
+	public Financement(long idFinancement, String libelle) {
 		this.idFinancement = idFinancement;
+		this.libelle = libelle;
+	}
+	public Financement( String libelle) {
+		
 		this.libelle = libelle;
 	}
 	

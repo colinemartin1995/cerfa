@@ -49,6 +49,13 @@ public class Creneau {
 		this.interne = interne;
 		this.fk_formation = fk_formation;
 	}
+	public Creneau( LocalDate dateDebut, LocalDate dateFin, boolean interne, long fk_formation) {
+		
+		this.dateDebut = dateDebut;
+		this.dateFin = dateFin;
+		this.interne = interne;
+		this.fk_formation = fk_formation;
+	}
 
 	
 }

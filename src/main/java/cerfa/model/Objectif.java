@@ -1,7 +1,7 @@
 package cerfa.model;
 
 public class Objectif {
-	private Integer idObjectif;
+	private long idObjectif;
 	private String libelle;
 	
 
@@ -11,14 +11,14 @@ public class Objectif {
 	public void setLibelle(String libelle) {
 		this.libelle = libelle;
 	}
-	public Integer getIdObjectif() {
+	public long getIdObjectif() {
 		return idObjectif;
 	}
-	public void setIdObjectif(Integer idObjectif) {
+	public void setIdObjectif(long idObjectif) {
 		this.idObjectif = idObjectif;
 	}
 	
-	public Objectif(Integer idObjectif, String libelle) {
+	public Objectif(long idObjectif, String libelle) {
 		this.idObjectif = idObjectif;
 		this.libelle = libelle;
 	}
