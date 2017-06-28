@@ -2,40 +2,61 @@ package cerfa.model.impl;
 
 import java.time.LocalDate;
 
-public class FinancementStagiaire {
+import cerfa.model.interfaces.IFinancement;
+import cerfa.model.interfaces.IFinancementStagiaire;
+import cerfa.model.interfaces.IStagiaire;
+
+public class FinancementStagiaire implements IFinancementStagiaire {
 	
-	private long fk_stagiaire;
-	private long fk_financement;
+	private IStagiaire stagiaire;
+	private IFinancement financement;
 	private LocalDate dateDebut;
 	private LocalDate dateFin;
 
-	public long getFk_stagiaire() {
-		return fk_stagiaire;
+	
+	@Override
+	public IStagiaire getStagiaire() {
+		return stagiaire;
 	}
-	public void setFk_stagiaire(long fk_stagaire) {
-		this.fk_stagiaire = fk_stagaire;
+	
+	@Override
+	public void setStagiaire(IStagiaire stagaire) {
+		this.stagiaire = stagaire;
 	}
-	public long getFk_financement() {
-		return fk_financement;
+	
+	@Override
+	public IFinancement getFinancement() {
+		return financement;
 	}
-	public void setFk_financement(long fk_financement) {
-		this.fk_financement = fk_financement;
+	
+	@Override
+	public void setFinancement(IFinancement financement) {
+		this.financement = financement;
 	}
+	
+	@Override
 	public LocalDate getDateDebut() {
 		return dateDebut;
 	}
+	
+	@Override
 	public void setDateDebut(LocalDate dateDebut) {
 		this.dateDebut = dateDebut;
 	}
+	
+	@Override
 	public LocalDate getDateFin() {
 		return dateFin;
 	}
+	
+	@Override
 	public void setDateFin(LocalDate dateFin) {
 		this.dateFin = dateFin;
 	}
-	public FinancementStagiaire(long fk_stagiaire, long fk_financement, LocalDate dateDebut, LocalDate dateFin) {
-		this.fk_stagiaire = fk_stagiaire;
-		this.fk_financement = fk_financement;
+
+	public FinancementStagiaire(IStagiaire stagiaire, IFinancement financement, LocalDate dateDebut, LocalDate dateFin) {
+		this.stagiaire = stagiaire;
+		this.financement = financement;
 		this.dateDebut = dateDebut;
 		this.dateFin = dateFin;
 	}

@@ -1,6 +1,6 @@
 package cerfa.dao.interfaces;
-import cerfa.model.impl.FinancementStagiaire;
+import cerfa.model.interfaces.IFinancementStagiaire;
 
-public interface IFinancementStagiaireDAO extends IDAO<FinancementStagiaire>  {
+public interface IFinancementStagiaireDAO extends IDAO<IFinancementStagiaire>  {
 
 }

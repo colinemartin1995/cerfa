@@ -1,7 +1,6 @@
 package cerfa.dao.interfaces;
+import cerfa.model.interfaces.IFormation;
 
-import cerfa.model.impl.Formation;
-
-public interface IFormationDAO extends IDAO<Formation> {
+public interface IFormationDAO extends IDAO<IFormation> {
 
 }

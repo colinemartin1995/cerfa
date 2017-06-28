@@ -100,23 +100,7 @@ public class ProxyStagiaire implements IStagiaire{
 		
 	}
 	
-	/*public Long getIdSpecialite() {
-		if (instance == null) {
-			//TODO DAO.factory 
-		}
-		return this.instance.getIdSpecialite();
-	}
 
-
-	@Override
-	public void setIdSpecialite(Long idSpecialite) {
-		if (instance == null) {
-			//TODO DAO.factory 
-		}else{
-			this.instance.setIdSpecialite(idSpecialite);
-		}
-		
-	*/
 	
 	
 	

@@ -12,7 +12,7 @@ import cerfa.db.DbException;
 import cerfa.model.impl.Objectif;
 import cerfa.model.interfaces.IObjectif;
 
-public class ObjectifDAOImpl extends DAO<Objectif> implements IObjectifDAO{
+public class ObjectifDAOImpl extends DAO<IObjectif> implements IObjectifDAO{
 
 	public ObjectifDAOImpl() throws ClassNotFoundException, DbException {
 		super();
@@ -65,9 +65,9 @@ public class ObjectifDAOImpl extends DAO<Objectif> implements IObjectifDAO{
 		return isDeleted;
 	}
 
-	public List<Objectif> findAll() {
+	public List<IObjectif> findAll() {
 
-		ArrayList<Objectif> listeObjectifs = new ArrayList<Objectif>();
+		ArrayList<IObjectif> listeObjectifs = new ArrayList<IObjectif>();
 		
 		try(Statement stm = (Statement)con.createStatement()){
 		

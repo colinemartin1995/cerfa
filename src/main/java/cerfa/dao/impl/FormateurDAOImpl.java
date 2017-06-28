@@ -9,16 +9,17 @@ import java.util.List;
 import cerfa.dao.interfaces.IFormateurDAO;
 import cerfa.db.DbException;
 import cerfa.model.impl.Formateur;
+import cerfa.model.interfaces.IFormateur;
 
 
-public class FormateurDAOImpl extends DAO<Formateur> implements IFormateurDAO{
+public class FormateurDAOImpl extends DAO<IFormateur> implements IFormateurDAO{
 
 	public FormateurDAOImpl() throws ClassNotFoundException, DbException {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Formateur create(Formateur obj) {
+	public IFormateur create(IFormateur obj) {
 		try(PreparedStatement preparedStatement =con.prepareStatement("INSERT INTO formateur (idFormateur, nom, prenom, interne) VALUES(?,?,?,?)"
 				+ "INNER JOIN personne ON idFormateur = personne.idPersonne ")){
 			preparedStatement.setLong(1,obj.getIdPersonne());
@@ -39,7 +40,7 @@ public class FormateurDAOImpl extends DAO<Formateur> implements IFormateurDAO{
 		return obj;
 	}
 
-	public Formateur update(Formateur obj) {
+	public IFormateur update(IFormateur obj) {
 		try(PreparedStatement preparedStatement =con.prepareStatement("UPDATE formation SET nom = ?, prenom = ?, interne = ? WHERE idFormateur = ? INNER JOIN personne ON idFormateur = personne.idPersonne")){
 			preparedStatement.setString(1,obj.getNom());
 			preparedStatement.setString(2,obj.getPrenom());
@@ -53,7 +54,7 @@ public class FormateurDAOImpl extends DAO<Formateur> implements IFormateurDAO{
 		}
 		return obj;
 	}
-	public Boolean delete(Formateur obj) {
+	public Boolean delete(IFormateur obj) {
 		boolean isDeleted = false;
 		try(PreparedStatement preparedStatement =con.prepareStatement("DELETE FROM formateur WHERE idFormateur = ?")) {
 			preparedStatement.setLong(1, obj.getIdFormateur());
@@ -71,8 +72,8 @@ public class FormateurDAOImpl extends DAO<Formateur> implements IFormateurDAO{
 		return isDeleted;
 	}
 
-	public List<Formateur> findAll() {
-		 ArrayList<Formateur> listeFormateurs = new ArrayList<Formateur>();
+	public List<IFormateur> findAll() {
+		 ArrayList<IFormateur> listeFormateurs = new ArrayList<IFormateur>();
 			
 			try(PreparedStatement preparedStatement =con.prepareStatement("SELECT idFormateur, nom, prenom, interne FROM formateur INNER JOIN personne ON idFormateur = personne.idPersonne")){
 			
@@ -95,9 +96,9 @@ public class FormateurDAOImpl extends DAO<Formateur> implements IFormateurDAO{
 			return listeFormateurs;
 		}
 
-	public Formateur find(long id) {
+	public IFormateur find(long id) {
 		
-			Formateur formateur = null;
+			IFormateur formateur = null;
 			try(PreparedStatement preparedStatement =con.prepareStatement("SELECT idFormateur, nom, prenom, interne FROM formateur INNER JOIN personne ON idFormateur = personne.idPersonne")){
 				preparedStatement.setLong(1,id);
 				ResultSet rs = preparedStatement.executeQuery();

@@ -1,7 +1,7 @@
 package cerfa.dao.interfaces;
 
-import cerfa.model.impl.Objectif;
+import cerfa.model.interfaces.IObjectif;
 
-public interface IObjectifDAO extends IDAO<Objectif> {
+public interface IObjectifDAO extends IDAO<IObjectif> {
 
 }

@@ -1,7 +1,6 @@
 package cerfa.dao.interfaces;
+import cerfa.model.interfaces.IFormateur;
 
-import cerfa.model.impl.Formateur;
-
-public interface IFormateurDAO extends IDAO<Formateur>{
+public interface IFormateurDAO extends IDAO<IFormateur>{
 
 }

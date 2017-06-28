@@ -9,6 +9,7 @@ import java.util.List;
 import cerfa.dao.interfaces.IFinancementDAO;
 import cerfa.db.DbException;
 import cerfa.model.impl.Financement;
+import cerfa.model.interfaces.IFinancement;
 
 
 public class FinancementDAOImpl  extends DAO<Financement> implements IFinancementDAO{
@@ -18,7 +19,7 @@ public class FinancementDAOImpl  extends DAO<Financement> implements IFinancemen
 		// TODO Auto-generated constructor stub
 	}
 
-	public Financement create(Financement obj) {
+	public IFinancement create(IFinancement obj) {
 		try(PreparedStatement preparedStatement =con.prepareStatement("INSERT INTO financement (libelle) VALUES (?)")){
 			preparedStatement.setString(1,obj.getLibelle());
 			preparedStatement.executeQuery();
@@ -34,7 +35,7 @@ public class FinancementDAOImpl  extends DAO<Financement> implements IFinancemen
 		return obj;
 	}
 
-	public Financement update(Financement obj) {
+	public IFinancement update(IFinancement obj) {
 		try(PreparedStatement preparedStatement =con.prepareStatement("UPDATE financement SET libelle = ? WHERE idFinancement = ?")){
 			preparedStatement.setString(1,obj.getLibelle());
 			preparedStatement.setLong(2,obj.getIdFinancement());
@@ -46,7 +47,7 @@ public class FinancementDAOImpl  extends DAO<Financement> implements IFinancemen
 		return obj;
 	}
 
-	public Boolean delete(Financement obj) {
+	public Boolean delete(IFinancement obj) {
 		boolean isDeleted = false;
 		try(PreparedStatement preparedStatement =con.prepareStatement("DELETE FROM financement WHERE idFinancement = ?")){
 			preparedStatement.setLong(1,obj.getIdFinancement());
@@ -86,8 +87,8 @@ ArrayList<Financement> listeFinancements = new ArrayList<Financement>();
 		return listeFinancements;
 	}
 
-	public Financement find(long id) {
-		Financement financement = null;
+	public IFinancement find(long id) {
+		IFinancement financement = null;
 		try(PreparedStatement preparedStatement =con.prepareStatement("SELECT 'idFinancement', `libelle` FROM financement WHERE idFinancement = ?")){
 			ResultSet rs = preparedStatement.executeQuery();
 			preparedStatement.setLong(1,id);

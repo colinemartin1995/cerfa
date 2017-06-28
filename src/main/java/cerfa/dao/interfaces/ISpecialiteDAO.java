@@ -1,7 +1,7 @@
 package cerfa.dao.interfaces;
 
-import cerfa.model.impl.Specialite;
+import cerfa.model.interfaces.ISpecialite;
 
-public interface ISpecialiteDAO extends IDAO<Specialite>{
+public interface ISpecialiteDAO extends IDAO<ISpecialite>{
 
 }

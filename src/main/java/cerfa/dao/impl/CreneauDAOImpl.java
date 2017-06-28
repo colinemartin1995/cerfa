@@ -10,6 +10,7 @@ import java.util.List;
 import cerfa.dao.interfaces.ICreneauDAO;
 import cerfa.db.DbException;
 import cerfa.model.impl.Creneau;
+import cerfa.model.interfaces.ICreneau;
 
 
 public class CreneauDAOImpl extends DAO<Creneau> implements ICreneauDAO{
@@ -19,7 +20,7 @@ public class CreneauDAOImpl extends DAO<Creneau> implements ICreneauDAO{
 		// TODO Auto-generated constructor stub
 	}
 
-	public Creneau create(Creneau obj) {
+	public ICreneau create(ICreneau obj) {
 		try(PreparedStatement preparedStatement =con.prepareStatement("INSERT INTO creneau (dateDebut, dateFin, interne, fk_formation)VALUES(?,?,?,?)")){
 			preparedStatement.setDate(1,Date.valueOf(obj.getDateDebut()));
 			preparedStatement.setDate(2,Date.valueOf(obj.getDateFin()));
@@ -39,7 +40,7 @@ public class CreneauDAOImpl extends DAO<Creneau> implements ICreneauDAO{
 		return obj;
 	}
 
-	public Creneau update(Creneau obj) {
+	public ICreneau update(ICreneau obj) {
 		try(PreparedStatement preparedStatement =con.prepareStatement("UPDATE creneau SET dateDebut = ?, dateFin = ?, interne = ?, fk_formation =? WHERE idCreneau = ?")){
 			preparedStatement.setDate(1,Date.valueOf(obj.getDateDebut()));
 			preparedStatement.setDate(2,Date.valueOf(obj.getDateFin()));
@@ -55,7 +56,7 @@ public class CreneauDAOImpl extends DAO<Creneau> implements ICreneauDAO{
 		return obj;
 	}
 
-	public Boolean delete(Creneau obj) {
+	public Boolean delete(ICreneau obj) {
 		boolean isDeleted = false;
 		try(PreparedStatement preparedStatement =con.prepareStatement("DELETE FROM creneau WHERE idCreneau = ?")){
 			preparedStatement.setLong(1,obj.getIdCreneau());
@@ -101,8 +102,8 @@ public class CreneauDAOImpl extends DAO<Creneau> implements ICreneauDAO{
 		
 	}
 
-	public Creneau find(long id) {
-		Creneau creneau = null;
+	public ICreneau find(long id) {
+		ICreneau creneau = null;
 		try(PreparedStatement preparedStatement =con.prepareStatement("SELECT 'idCreneau', `dateDebut`,`dateFin`,`interne`,`fk_Formation` FROM creneau WHERE idCreneau = ?")){
 			ResultSet rs = preparedStatement.executeQuery();
 			preparedStatement.setLong(1,id);

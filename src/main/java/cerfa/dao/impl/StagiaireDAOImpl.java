@@ -5,12 +5,12 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import cerfa.dao.interfaces.IEtudiantDAO;
+import cerfa.dao.interfaces.IStagiaireDAO;
 import cerfa.db.DbException;
 import cerfa.model.impl.Stagiaire;
 import cerfa.model.interfaces.IStagiaire;
 
-public class StagiaireDAOImpl extends DAO<Stagiaire> implements IEtudiantDAO {
+public class StagiaireDAOImpl extends DAO<IStagiaire> implements IStagiaireDAO {
 
 	public StagiaireDAOImpl() throws ClassNotFoundException, DbException {
 		super();
@@ -71,8 +71,8 @@ public class StagiaireDAOImpl extends DAO<Stagiaire> implements IEtudiantDAO {
 		return isDeleted;
 	}
 
-	public List<Stagiaire> findAll() {
-		 ArrayList<Stagiaire> listeStagiaires = new ArrayList<Stagiaire>();
+	public List<IStagiaire> findAll() {
+		 ArrayList<IStagiaire> listeStagiaires = new ArrayList<IStagiaire>();
 			
 			try(PreparedStatement preparedStatement =con.prepareStatement("SELECT idStagiaire, nom, prenom, interne FROM stagiaire INNER JOIN personne ON idStagiaire = personne.idPersonne")){
 			

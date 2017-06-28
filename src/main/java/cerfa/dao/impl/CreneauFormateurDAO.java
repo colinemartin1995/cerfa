@@ -6,6 +6,7 @@ import cerfa.dao.interfaces.ICreneauFormateurDAO;
 
 import cerfa.db.DbException;
 import cerfa.model.impl.CreneauFormateur;
+import cerfa.model.interfaces.ICreneauFormateur;
 
 
 public class CreneauFormateurDAO extends DAO<CreneauFormateur> implements ICreneauFormateurDAO{
@@ -15,17 +16,17 @@ public class CreneauFormateurDAO extends DAO<CreneauFormateur> implements ICrene
 		// TODO Auto-generated constructor stub
 	}
 
-	public CreneauFormateur create(CreneauFormateur obj) {
+	public ICreneauFormateur create(ICreneauFormateur obj) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public CreneauFormateur update(CreneauFormateur obj) {
+	public ICreneauFormateur update(ICreneauFormateur obj) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public Boolean delete(CreneauFormateur obj) {
+	public Boolean delete(ICreneauFormateur obj) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -35,7 +36,7 @@ public class CreneauFormateurDAO extends DAO<CreneauFormateur> implements ICrene
 		return null;
 	}
 
-	public CreneauFormateur find(long id) {
+	public ICreneauFormateur find(long id) {
 		// TODO Auto-generated method stub
 		return null;
 	}

@@ -16,7 +16,7 @@ import cerfa.model.interfaces.IFormation;
 import cerfa.model.proxy.ProxyObjectif;
 import cerfa.model.proxy.ProxySpecialite;
 
-public class FormationDAOImpl extends DAO<Formation> implements IFormationDAO{
+public class FormationDAOImpl extends DAO<IFormation> implements IFormationDAO{
 
 	public FormationDAOImpl() throws ClassNotFoundException, DbException {
 		super();
@@ -75,8 +75,8 @@ public class FormationDAOImpl extends DAO<Formation> implements IFormationDAO{
 		return isDeleted;
 	}
 
-	public List<Formation> findAll() {
-        ArrayList<Formation> listeFormations = new ArrayList<Formation>();
+	public List<IFormation> findAll() {
+        ArrayList<IFormation> listeFormations = new ArrayList<IFormation>();
         ProxySpecialite specialite = null;
         ProxyObjectif objectif = null;
         Formation formation = null;

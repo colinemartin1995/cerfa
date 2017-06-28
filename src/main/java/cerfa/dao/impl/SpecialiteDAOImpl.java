@@ -13,7 +13,7 @@ import cerfa.model.impl.Specialite;
 import cerfa.model.interfaces.ISpecialite;
 import cerfa.model.proxy.ProxySpecialite;
 
-public class SpecialiteDAOImpl extends DAO<Specialite> implements ISpecialiteDAO {
+public class SpecialiteDAOImpl extends DAO<ISpecialite> implements ISpecialiteDAO {
 
 	public SpecialiteDAOImpl() throws ClassNotFoundException, DbException {
 		super();
@@ -66,8 +66,8 @@ public class SpecialiteDAOImpl extends DAO<Specialite> implements ISpecialiteDAO
 		return isDeleted;
 	}
 
-	public List<Specialite> findAll() {
-		ArrayList<Specialite> listeSpecialite = new ArrayList<Specialite>();
+	public List<ISpecialite> findAll() {
+		ArrayList<ISpecialite> listeSpecialite = new ArrayList<ISpecialite>();
 		
 		try(PreparedStatement preparedStatement =con.prepareStatement("SELECT 'idSpecialite', `nom','code' FROM specialite")){
 		

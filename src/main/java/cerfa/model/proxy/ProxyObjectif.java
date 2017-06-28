@@ -1,7 +1,7 @@
 package cerfa.model.proxy;
 
 import cerfa.model.impl.Objectif;
-import cerfa.model.impl.Specialite;
+
 import cerfa.model.interfaces.IObjectif;
 
 public class ProxyObjectif implements IObjectif {
@@ -47,18 +47,6 @@ public class ProxyObjectif implements IObjectif {
 		}
 		
 	}
-	/*public Long getIdSpecialite() {
-	if (instance == null) {
-		//TODO DAO.factory 
-	}
-	return this.instance.getIdSpecialite();
-}
-
-
-@Override
-public void setIdSpecialite(Long idSpecialite) {
 	
-	
-*/
 
 }
