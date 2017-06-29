@@ -6,7 +6,7 @@ public interface ICreneau {
 
 	long getIdCreneau();
 
-	void setIdCreneau(Long idCreneau);
+	void setIdCreneau(long idCreneau);
 
 	LocalDate getDateDebut();
 
@@ -20,8 +20,8 @@ public interface ICreneau {
 
 	void setInterne(boolean interne);
 
-	long getFk_formation();
+	IFormation getFormation();
 
-	void setFk_formation(long fk_formation);
+	void setFormation(IFormation formation);
 
 }

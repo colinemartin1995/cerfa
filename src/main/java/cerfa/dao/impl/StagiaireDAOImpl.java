@@ -74,15 +74,15 @@ public class StagiaireDAOImpl extends DAO<IStagiaire> implements IStagiaireDAO {
 	public List<IStagiaire> findAll() {
 		 ArrayList<IStagiaire> listeStagiaires = new ArrayList<IStagiaire>();
 			
-			try(PreparedStatement preparedStatement =con.prepareStatement("SELECT idStagiaire, nom, prenom, interne FROM stagiaire INNER JOIN personne ON idStagiaire = personne.idPersonne")){
+			try(PreparedStatement preparedStatement =con.prepareStatement("SELECT idStagiaire, personne.nom, personne.prenom, interne FROM stagiaire INNER JOIN personne ON idStagiaire = personne.idPersonne")){
 			
 				ResultSet rs = preparedStatement.executeQuery();
 				
 				while(rs.next()){
 			
 					Long idStagiaire = rs.getLong("idStagiaire");
-					String nom = rs.getString("nom");
-					String prenom = rs.getString("prenom");
+					String nom = rs.getString("personne.nom");
+					String prenom = rs.getString("persnne.prenom");
 					Boolean interne = rs.getBoolean("interne");
 					Stagiaire stagiaire = new Stagiaire(idStagiaire,interne,nom,prenom);
 					listeStagiaires.add(stagiaire);
@@ -98,15 +98,15 @@ public class StagiaireDAOImpl extends DAO<IStagiaire> implements IStagiaireDAO {
 	public IStagiaire find(long id) {
 		 
 			Stagiaire stagiaire = null;
-			try(PreparedStatement preparedStatement =con.prepareStatement("SELECT idStagiaire, nom, prenom, interne FROM stagiaire INNER JOIN personne ON idStagiaire = personne.idPersonne WHERE idStagiaire = ?")){
+			try(PreparedStatement preparedStatement =con.prepareStatement("SELECT idStagiaire, personne.nom, personne.prenom, interne FROM stagiaire INNER JOIN personne ON idStagiaire = personne.idPersonne WHERE idStagiaire = ?")){
 			
 				ResultSet rs = preparedStatement.executeQuery();
 				
 				while(rs.next()){
 			
 					Long idStagiaire = rs.getLong("idStagiaire");
-					String nom = rs.getString("nom");
-					String prenom = rs.getString("prenom");
+					String nom = rs.getString("personne.nom");
+					String prenom = rs.getString("personne.prenom");
 					Boolean interne = rs.getBoolean("interne");
 				    stagiaire = new Stagiaire(idStagiaire,interne,nom,prenom);
 				}

@@ -110,37 +110,25 @@ public class FormationDAOImpl extends DAO<IFormation> implements IFormationDAO{
 	     Objectif objectif = null;
 		 IFormation formation = null;
 			
-		try(PreparedStatement preparedStatement =con.prepareStatement("SELECT idFormation, nom,fk_specialite,fk_objectif FROM formation WHERE idFormation = ?")){
+		try(PreparedStatement preparedStatement =con.prepareStatement("SELECT idFormation, nom,fk_specialite,fk_objectif FROM formation INNER JOIN objectif ON fk_objectif = objectif.idObjectif INNER JOIN specialite ON fk_specialite = specialite.idSpecialite WHERE idFormation = ?")){
 				preparedStatement.setLong(1, id);
 				ResultSet rs = preparedStatement.executeQuery();
 				
 				while(rs.next()){
 					
 					long idFormation = rs.getLong("idFormation");
-					long idSpecialite = rs.getLong("fk_specialite");
-					long idObjectif = rs.getLong("fk_objectif");
-					String nom = rs.getString("nom");
+					String nomFormation = rs.getString("nom");
 										
+					long idObjectif = rs.getLong("fk_objectif");
+					String libelle = rs.getString("libelle");
+					objectif = new Objectif(idObjectif,libelle);
 					
+					long idSpecialite = rs.getLong("fk_specialite");
+					String nom = rs.getString("nom");
+					String code = rs.getString("code");
+					specialite = new Specialite(idSpecialite, nom, code);
 					
-					
-					
-					
-					
-					//TODO
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					formation = new Formation(idFormation,nom,specialite,objectif);
+					formation = new Formation(idFormation,nomFormation,specialite,objectif);
 				}
 			}
 			catch(Exception e){

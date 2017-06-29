@@ -3,16 +3,17 @@ package cerfa.model.impl;
 import java.time.LocalDate;
 
 import cerfa.model.interfaces.ICreneau;
+import cerfa.model.interfaces.IFormation;
 
-public class Creneau implements ICreneau {
+public class Creneau implements ICreneau  {
 
 	private long idCreneau;
 	private LocalDate dateDebut;
 	private LocalDate dateFin;
 	private boolean interne;
-	private long fk_formation;
+	private IFormation formation;
 	
-
+	
 	/* (non-Javadoc)
 	 * @see cerfa.model.impl.ICreneau#getIdCreneau()
 	 */
@@ -21,13 +22,12 @@ public class Creneau implements ICreneau {
 		return idCreneau;
 	}
 	/* (non-Javadoc)
-	 * @see cerfa.model.impl.ICreneau#setIdCreneau(java.lang.Long)
+	 * @see cerfa.model.impl.ICreneau#setIdCreneau(long)
 	 */
 	@Override
-	public void setIdCreneau(Long idCreneau){
+	public void setIdCreneau(long idCreneau) {
 		this.idCreneau = idCreneau;
 	}
-
 	/* (non-Javadoc)
 	 * @see cerfa.model.impl.ICreneau#getDateDebut()
 	 */
@@ -71,33 +71,37 @@ public class Creneau implements ICreneau {
 		this.interne = interne;
 	}
 	/* (non-Javadoc)
-	 * @see cerfa.model.impl.ICreneau#getFk_formation()
+	 * @see cerfa.model.impl.ICreneau#getFormation()
 	 */
 	@Override
-	public long getFk_formation() {
-		return fk_formation;
+	public IFormation getFormation() {
+		return formation;
 	}
 	/* (non-Javadoc)
-	 * @see cerfa.model.impl.ICreneau#setFk_formation(long)
+	 * @see cerfa.model.impl.ICreneau#setFormation(cerfa.model.interfaces.IFormation)
 	 */
 	@Override
-	public void setFk_formation(long fk_formation) {
-		this.fk_formation = fk_formation;
+	public void setFormation(IFormation formation) {
+		this.formation = formation;
 	}
-	public Creneau(long idCreneau, LocalDate dateDebut, LocalDate dateFin, boolean interne, long fk_formation) {
+	
+	public Creneau(long idCreneau, LocalDate dateDebut, LocalDate dateFin, boolean interne, IFormation formation) {
 		this.idCreneau = idCreneau;
 		this.dateDebut = dateDebut;
 		this.dateFin = dateFin;
 		this.interne = interne;
-		this.fk_formation = fk_formation;
+		this.formation = formation;
 	}
-	public Creneau( LocalDate dateDebut, LocalDate dateFin, boolean interne, long fk_formation) {
+	public Creneau(LocalDate dateDebut, LocalDate dateFin, boolean interne, IFormation formation) {
 		
 		this.dateDebut = dateDebut;
 		this.dateFin = dateFin;
 		this.interne = interne;
-		this.fk_formation = fk_formation;
+		this.formation = formation;
 	}
+	
+	
+	
 
 	
 }

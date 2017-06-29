@@ -11,7 +11,9 @@ import java.util.List;
 
 import cerfa.dao.interfaces.IFinancementStagiaireDAO;
 import cerfa.db.DbException;
+import cerfa.model.impl.Financement;
 import cerfa.model.impl.FinancementStagiaire;
+import cerfa.model.impl.Stagiaire;
 import cerfa.model.interfaces.IFinancementStagiaire;
 
 public class FinancementStagiaireDAOImpl extends DAO<IFinancementStagiaire> implements IFinancementStagiaireDAO {
@@ -79,20 +81,32 @@ public class FinancementStagiaireDAOImpl extends DAO<IFinancementStagiaire> impl
 
 	public List<IFinancementStagiaire> findAll() {
 ArrayList<IFinancementStagiaire> listeFinancementStagiaires = new ArrayList<IFinancementStagiaire>();
-		
-		try(PreparedStatement preparedStatement =con.prepareStatement("SELECT fk_stagiaire, fk_financement, dateDebut, dateFin FROM financementstagiaire ")){
+		Stagiaire stagiaire = null;
+		Financement financement  = null;
+		try(PreparedStatement preparedStatement =con.prepareStatement("SELECT fk_stagiaire, fk_financement, idStagiaire, nom, prenom, interne, idFinancement, libelle, dateDebut, dateFin FROM financementstagiaire INNER JOIN stagiaire ON fk_stagiaire = stagiaire.idStagiaire INNER JOIN financement ON fk_financement = idFinancement INNER JOIN personne ON stagiaire.idStagiaire = personne.idPersonne")){
 		
 			ResultSet rs = preparedStatement.executeQuery();
 					
 			while(rs.next()){
 				
-				long fk_stagiaire = rs.getLong("fk_stagiaire");
+				//long fk_stagiaire = rs.getLong("fk_stagiaire");
+				Long idStagiaire = rs.getLong("fk_Stagiaire");
+				String nom = rs.getString("personne.nom");
+				String prenom = rs.getString("personne.prenom");
+				Boolean interne = rs.getBoolean("stagiair.einterne");
+			    stagiaire = new Stagiaire(idStagiaire,interne,nom,prenom);
+			    
+			    long idFinancement= rs.getLong("fk_Financement");
+				String libelle = rs.getString("financement.libelle");
+				financement = new Financement(idFinancement,libelle);
+				
 				LocalDate dateDebut = rs.getDate("dateDebut").toLocalDate();
 				LocalDate dateFin = rs.getDate("dateFin").toLocalDate();
-				long fk_financement = rs.getLong("fk_financement");
+				//long fk_financement = rs.getLong("fk_financement");
 				
 				
-				FinancementStagiaire financementStagiaire = new FinancementStagiaire(fk_stagiaire,fk_financement,dateDebut,dateFin);
+				FinancementStagiaire financementStagiaire = new FinancementStagiaire(stagiaire,financement,dateDebut,dateFin);
+				
 				listeFinancementStagiaires.add(financementStagiaire);
 				
 			}
@@ -106,22 +120,30 @@ ArrayList<IFinancementStagiaire> listeFinancementStagiaires = new ArrayList<IFin
 
 	public IFinancementStagiaire find(long id) {
 		
-		IFinancementStagiaire fntStagiaire = null;
-		try(PreparedStatement preparedStatement =con.prepareStatement("SELECT fk_stagiaire, fk_financement, dateDebut, dateFin FROM financementstagiaire WHERE fk_stagiaire = ?")){
+		FinancementStagiaire fntStagiaire = null;
+		Stagiaire stagiaire = null;
+		Financement financement  = null;
+		try(PreparedStatement preparedStatement =con.prepareStatement("SELECT fk_stagiaire, fk_financement, dateDebut, dateFin, personne.nom, personne.prenom, stagiaire.interne, financement.libelle FROM financementstagiaire INNER JOIN stagiaire ON fk_stagiaire = stagiaire.idStagiaire INNER JOIN financement ON fk_financement = idFinancement INNER JOIN personne ON stagiaire.idStagiaire = personne.idPersonne WHERE fk_stagiaire = ?")){
 			preparedStatement.setLong(1, id);
 			ResultSet rs = preparedStatement.executeQuery();
 			
 			while(rs.next()){
 				
-				long fk_stagiaire = rs.getLong("fk_stagiaire");
+				Long idStagiaire = rs.getLong("fk_Stagiaire");
+				String nom = rs.getString("personne.nom");
+				String prenom = rs.getString("personne.prenom");
+				Boolean interne = rs.getBoolean("stagiaire.interne");
+			    stagiaire = new Stagiaire(idStagiaire,interne,nom,prenom);
+			    
+			    long idFinancement= rs.getLong("fk_Financement");
+				String libelle = rs.getString("financement.libelle");
+				financement = new Financement(idFinancement,libelle);
+				
+				//long fk_stagiaire = rs.getLong("fk_stagiaire");
 				LocalDate dateDebut = rs.getDate("dateDebut").toLocalDate();
 				LocalDate dateFin = rs.getDate("dateFin").toLocalDate();
-				long fk_financement = rs.getLong("fk_financement");
-				
-				
-				fntStagiaire = new FinancementStagiaire(fk_stagiaire,fk_financement,dateDebut,dateFin);
-				
-				
+				//long fk_financement = rs.getLong("fk_financement");
+				fntStagiaire = new FinancementStagiaire(stagiaire,financement,dateDebut,dateFin);
 			}
 		}
 		catch(Exception e){

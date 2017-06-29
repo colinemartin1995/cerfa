@@ -1,7 +1,7 @@
 package cerfa.dao.interfaces;
 
-import cerfa.model.impl.Creneau;
+import cerfa.model.interfaces.ICreneau;
 
-public interface ICreneauDAO extends IDAO<Creneau> {
+public interface ICreneauDAO extends IDAO<ICreneau> {
 
 }

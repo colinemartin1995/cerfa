@@ -11,7 +11,7 @@ import cerfa.dao.interfaces.ISpecialiteDAO;
 import cerfa.db.DbException;
 import cerfa.model.impl.Specialite;
 import cerfa.model.interfaces.ISpecialite;
-import cerfa.model.proxy.ProxySpecialite;
+
 
 public class SpecialiteDAOImpl extends DAO<ISpecialite> implements ISpecialiteDAO {
 

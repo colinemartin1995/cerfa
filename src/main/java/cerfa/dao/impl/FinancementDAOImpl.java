@@ -12,7 +12,7 @@ import cerfa.model.impl.Financement;
 import cerfa.model.interfaces.IFinancement;
 
 
-public class FinancementDAOImpl  extends DAO<Financement> implements IFinancementDAO{
+public class FinancementDAOImpl  extends DAO<IFinancement> implements IFinancementDAO{
 
 	public FinancementDAOImpl() throws ClassNotFoundException, DbException {
 		super();
@@ -64,8 +64,8 @@ public class FinancementDAOImpl  extends DAO<Financement> implements IFinancemen
 		return isDeleted;
 	}
 
-	public List<Financement> findAll() {
-ArrayList<Financement> listeFinancements = new ArrayList<Financement>();
+	public List<IFinancement> findAll() {
+ArrayList<IFinancement> listeFinancements = new ArrayList<IFinancement>();
 		
 		try(Statement stm = (Statement)con.createStatement()){
 		
