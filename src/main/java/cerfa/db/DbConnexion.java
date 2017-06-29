@@ -34,12 +34,11 @@ public class DbConnexion {
 		
 	}
 
-	public Connection ConnexionDataBase() throws ClassNotFoundException {
+	public Connection ConnexionDataBase() throws DbException {
 		try {
 			Class.forName(this.driver);
 		} catch (ClassNotFoundException  e) {
-			System.out.println("Impossible de charger le driver");
-			throw e;
+			throw new DbException("Impossible de charger le driver", e);
 		}
 		try{
 			this.connexion = DriverManager.getConnection(this.url,this.utilisateur,this.motdepasse);

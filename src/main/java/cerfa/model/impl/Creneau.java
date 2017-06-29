@@ -1,9 +1,12 @@
 package cerfa.model.impl;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 import cerfa.model.interfaces.ICreneau;
+import cerfa.model.interfaces.IFormateur;
 import cerfa.model.interfaces.IFormation;
+import cerfa.model.interfaces.IStagiaire;
 
 public class Creneau implements ICreneau  {
 
@@ -12,7 +15,7 @@ public class Creneau implements ICreneau  {
 	private LocalDate dateFin;
 	private boolean interne;
 	private IFormation formation;
-	
+	private ArrayList<Formateur> formateur;
 	
 	/* (non-Javadoc)
 	 * @see cerfa.model.impl.ICreneau#getIdCreneau()
@@ -85,6 +88,26 @@ public class Creneau implements ICreneau  {
 		this.formation = formation;
 	}
 	
+	@Override
+	public ArrayList<IFormateur> getListeFormateurs() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public void setListeFormateurs(ArrayList<IFormateur> lstFormateurs) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public ArrayList<IStagiaire> getListeStagiaires() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public void setListeStagiaires(ArrayList<IStagiaire> lstStagiaires) {
+		// TODO Auto-generated method stub
+		
+	}
 	public Creneau(long idCreneau, LocalDate dateDebut, LocalDate dateFin, boolean interne, IFormation formation) {
 		this.idCreneau = idCreneau;
 		this.dateDebut = dateDebut;
@@ -99,6 +122,9 @@ public class Creneau implements ICreneau  {
 		this.interne = interne;
 		this.formation = formation;
 	}
+	
+	
+
 	
 	
 	

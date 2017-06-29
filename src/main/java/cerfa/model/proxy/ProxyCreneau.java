@@ -1,13 +1,21 @@
 package cerfa.model.proxy;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 
+import cerfa.dao.factory.DAOFactory;
+import cerfa.dao.interfaces.ICreneauDAO;
+import cerfa.db.DbException;
 import cerfa.model.interfaces.ICreneau;
+import cerfa.model.interfaces.IFormateur;
 import cerfa.model.interfaces.IFormation;
+import cerfa.model.interfaces.IStagiaire;
 
 public class ProxyCreneau implements ICreneau {
-	private cerfa.model.interfaces.ICreneau instance = null;
+	private ICreneau instance = null;
 	private long idCreneau;
+	private CreneauDAO CreneauDAO;
+
 
 	public ProxyCreneau(long idCreneau) {
 		this.idCreneau = idCreneau;
@@ -15,10 +23,7 @@ public class ProxyCreneau implements ICreneau {
 
 	@Override
 	public long getIdCreneau() {
-		if (instance == null) {
-			//TODO DAO.factory 
-		}
-		return this.instance.getIdCreneau();
+		return this.idCreneau;
 	}
 
 	@Override
@@ -34,7 +39,14 @@ public class ProxyCreneau implements ICreneau {
 	@Override
 	public LocalDate getDateDebut() {
 		if (instance == null) {
-			//TODO DAO.factory 
+			
+			try {
+				ICreneauDAO creneauDAO = (ICreneauDAO)DAOFactory.getInstance(DAOFactory.CRENEAU);
+				this.instance = creneauDAO.find(this.idCreneau);
+			} catch (DbException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		return this.instance.getDateDebut();
 	}
@@ -52,7 +64,14 @@ public class ProxyCreneau implements ICreneau {
 	@Override
 	public LocalDate getDateFin() {
 		if (instance == null) {
-			//TODO DAO.factory 
+			
+			try {
+				ICreneauDAO creneauDAO = (ICreneauDAO)DAOFactory.getInstance(DAOFactory.CRENEAU);
+				this.instance = creneauDAO.find(this.idCreneau);
+			} catch (DbException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		return this.instance.getDateFin();
 	}
@@ -60,9 +79,26 @@ public class ProxyCreneau implements ICreneau {
 	@Override
 	public void setDateFin(LocalDate dateFin) {
 		if (instance == null) {
-			//TODO DAO.factory 
+			ICreneauDAO creneauDAO;
+			try {
+				creneauDAO = (ICreneauDAO)DAOFactory.getInstance(DAOFactory.CRENEAU);
+				this.instance = creneauDAO.find(this.idCreneau);
+			} catch (DbException e) {
+				
+				e.printStackTrace();
+			}
+			
+			
 		}else{
+			
 			this.instance.setDateFin(dateFin);
+			try {
+				ICreneauDAO creneauDAO = (ICreneauDAO)DAOFactory.getInstance(DAOFactory.CRENEAU);
+				this.instance = creneauDAO.update(instance);
+			} catch (DbException e) {
+				// 
+				e.printStackTrace();
+			}
 		}
 		
 	}
@@ -70,7 +106,14 @@ public class ProxyCreneau implements ICreneau {
 	@Override
 	public boolean isInterne() {
 		if (instance == null) {
-			//TODO DAO.factory 
+			
+			try {
+				ICreneauDAO creneauDAO = (ICreneauDAO)DAOFactory.getInstance(DAOFactory.CRENEAU);
+				this.instance = creneauDAO.find(this.idCreneau);
+			} catch (DbException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		return this.instance.isInterne();
 	}
@@ -88,7 +131,14 @@ public class ProxyCreneau implements ICreneau {
 	@Override
 	public IFormation getFormation() {
 		if (instance == null) {
-			//TODO DAO.factory 
+			
+			try {
+				ICreneauDAO creneauDAO = (ICreneauDAO)DAOFactory.getInstance(DAOFactory.CRENEAU);
+				this.instance = creneauDAO.find(this.idCreneau);
+			} catch (DbException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		return this.instance.getFormation();
 	}
@@ -100,6 +150,46 @@ public class ProxyCreneau implements ICreneau {
 		}else{
 			this.instance.setFormation(formation);
 		}
+		
+	}
+
+	@Override
+	public ArrayList<IFormateur> getListeFormateurs() {
+		if (instance == null) {
+			
+			try {
+				ICreneauDAO creneauDAO = (ICreneauDAO)DAOFactory.getInstance(DAOFactory.CRENEAU);
+				this.instance = creneauDAO.find(this.idCreneau);
+			} catch (DbException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		} return this.instance.getListeFormateurs();
+	}
+
+	@Override
+	public void setListeFormateurs(ArrayList<IFormateur> lstFormateurs) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public ArrayList<IStagiaire> getListeStagiaires() {
+		if (instance == null) {
+			
+			try {
+				ICreneauDAO creneauDAO = (ICreneauDAO)DAOFactory.getInstance(DAOFactory.CRENEAU);
+				this.instance = creneauDAO.find(this.idCreneau);
+			} catch (DbException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		} return this.instance.getListeStagiaires();
+	}
+
+	@Override
+	public void setListeStagiaires(ArrayList<IStagiaire> lstStagiaires) {
+		// TODO Auto-generated method stub
 		
 	}
 	
